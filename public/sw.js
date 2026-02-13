@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'stock-famille-dcb-v5';
+const CACHE_NAME = 'stock-famille-dcb-v6';
 const URLS_TO_CACHE = [
   './',
   './index.html',
