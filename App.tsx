@@ -11,11 +11,9 @@ import {
   Minus,
   Search, 
   PackageOpen, 
-  ChevronRight,
   Filter,
   RefreshCw,
-  AlertCircle,
-  Database
+  AlertCircle
 } from 'lucide-react';
 import { DEFAULT_CATEGORY_COLOR } from './constants';
 
@@ -351,7 +349,7 @@ function App() {
           )}
           
           <div className="text-center text-xs text-gray-300 mt-8 pb-4">
-            v1.0.3
+            v1.0.4
           </div>
         </div>
 
