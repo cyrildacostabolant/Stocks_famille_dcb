@@ -1,8 +1,9 @@
 
-const CACHE_NAME = 'stock-famille-dcb-v4';
+const CACHE_NAME = 'stock-famille-dcb-v5';
 const URLS_TO_CACHE = [
   './',
-  './index.html'
+  './index.html',
+  './icon.png'
 ];
 
 self.addEventListener('install', (event) => {
