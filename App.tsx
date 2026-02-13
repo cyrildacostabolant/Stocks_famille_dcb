@@ -349,7 +349,7 @@ function App() {
           )}
           
           <div className="text-center text-xs text-gray-300 mt-8 pb-4">
-            v1.0.4
+            v1.0.5
           </div>
         </div>
 
