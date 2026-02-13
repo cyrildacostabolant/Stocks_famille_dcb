@@ -13,6 +13,18 @@ interface StockItemModalProps {
   onUpdate: () => void;
 }
 
+// Fonction utilitaire pour générer un UUID si la base de données ne le fait pas automatiquement
+const generateUUID = () => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+};
+
 export const StockItemModal: React.FC<StockItemModalProps> = ({ 
   isOpen, 
   onClose, 
@@ -48,32 +60,39 @@ export const StockItemModal: React.FC<StockItemModalProps> = ({
 
     setLoading(true);
     try {
-      const payload = {
-        produit: produit,
-        quantite: quantite,
-        categorie: categorieName === "" ? null : categorieName
+      const basePayload = {
+        produit: produit.trim(),
+        quantite: Math.max(0, Math.floor(quantite)), // Ensure positive integer
+        categorie: !categorieName ? null : categorieName // Ensure null if empty
       };
 
       if (item) {
         // Update
         const { error } = await supabase
           .from('stocks')
-          .update(payload)
+          .update(basePayload)
           .eq('id', item.id);
         if (error) throw error;
       } else {
-        // Create
+        // Create - On génère l'ID manuellement car la BDD semble ne pas avoir de valeur par défaut
+        const createPayload = {
+          ...basePayload,
+          id: generateUUID()
+        };
+        
         const { error } = await supabase
           .from('stocks')
-          .insert([payload]);
+          .insert([createPayload])
+          .select(); // Add select to verify insertion
         if (error) throw error;
       }
 
       onUpdate();
       onClose();
-    } catch (err) {
-      console.error(err);
-      alert('Une erreur est survenue');
+    } catch (err: any) {
+      console.error('Erreur sauvegarde:', err);
+      // Affiche le message d'erreur précis pour aider au débogage
+      alert(`Erreur lors de l'enregistrement : ${err.message || err.error_description || 'Erreur inconnue'}`);
     } finally {
       setLoading(false);
     }
@@ -89,9 +108,9 @@ export const StockItemModal: React.FC<StockItemModalProps> = ({
       if (error) throw error;
       onUpdate();
       onClose();
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Erreur lors de la suppression');
+      alert(`Erreur lors de la suppression : ${err.message}`);
     } finally {
       setLoading(false);
     }
