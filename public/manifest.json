@@ -1,6 +1,6 @@
 {
-  "name": "Home Stock Manager",
-  "short_name": "HomeStock",
+  "name": "Stocks Famille DCB",
+  "short_name": "Stocks DCB",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f3f4f6",
@@ -8,12 +8,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://picsum.photos/192/192",
+      "src": "https://img.icons8.com/fluency/512/canned-food.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://picsum.photos/512/512",
+      "src": "https://img.icons8.com/fluency/512/canned-food.png",
       "sizes": "512x512",
       "type": "image/png"
     }

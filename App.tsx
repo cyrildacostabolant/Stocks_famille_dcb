@@ -170,7 +170,7 @@ function App() {
         <div className="p-6 border-b border-gray-100">
           <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
             <PackageOpen className="text-blue-600" />
-            HomeStock
+            Stocks Famille DCB
           </h1>
         </div>
         
@@ -349,7 +349,7 @@ function App() {
           )}
           
           <div className="text-center text-xs text-gray-300 mt-8 pb-4">
-            v1.0.5
+            v1.0.6
           </div>
         </div>
 
