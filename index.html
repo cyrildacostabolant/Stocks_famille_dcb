@@ -2,9 +2,15 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="manifest" href="./manifest.json?v=6" />
-    <link rel="icon" type="image/png" href="icon.png" />
-    <link rel="apple-touch-icon" href="icon.png" />
+    <link rel="manifest" href="/manifest.json?v=7" />
+    
+    <!-- Favicon standard -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon.png" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    
+    <!-- iOS / Apple -->
+    <link rel="apple-touch-icon" href="/icon.png" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <!-- PWA Settings -->
@@ -63,12 +69,12 @@
 </head>
   <body class="bg-gray-50 text-gray-900 h-screen w-screen overflow-hidden">
     <div id="root" class="h-full w-full flex flex-col"></div>
-    <script type="module" src="./index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
     <script>
-      // Utilisation d'un chemin relatif pour le SW pour éviter les erreurs si hébergé dans un sous-dossier
+      // Enregistrement du Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
+          navigator.serviceWorker.register('/sw.js')
             .then((registration) => {
               console.log('SW registered successfully:', registration.scope);
             })
