@@ -349,6 +349,10 @@ function App() {
               })}
             </div>
           )}
+          
+          <div className="text-center text-xs text-gray-300 mt-8 pb-4">
+            v1.0.1
+          </div>
         </div>
 
         {/* Floating Action Button (Mobile & Desktop) */}
